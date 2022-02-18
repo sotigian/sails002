@@ -1,23 +1,22 @@
 /**
- * Product.js
+ * Customer.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
-const { description } = require("../controllers/products-controller");
-
 module.exports = {
-  tableName: 'Products',
+  tableName: 'customers',
   attributes: {
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    name: { type: 'string', required: true },
-    price: {type: 'number', required: true, columnType: 'DOUBLE'},
-    description: { type: 'string', required: true}
-    
+    firstName: { type: 'string', required: true, columnName: 'firstname'},
+    lastName: { type: 'string', required: true, columnName: 'lastname'},
+    email: { type: 'string', required: true},
+    tel: { type: 'string', required: true},
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -26,6 +25,10 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    orders: {
+      collection: 'order',
+      via: 'customer_id'
+    }
 
   },
 
